@@ -1,20 +1,22 @@
+# LIF Simulator
+# Completed for Rutgers University Brain-Inspired Computing (198:525)
+# Priya Pamnani (pp572)
+
 import plotter
 
 # Create list of times to run simulation
 # Set up to run for 50 ms, stepping by 0.1 ms
 times = [0]
 dt = 0.1
-while times[-1] < 50:
-    times.append(times[-1] + dt)
 
 
 # Set vars to be used in calculation
 # Variable names equivalent to those used in assignment description
-Vm = [0.0] * len(times)
-Rm = 1
-Cm = 10
-tau_m = Rm*Cm
-Vt = 1  # threshold of V, fires when exceeding threshold
+Vm = [0.0]  # voltage
+Cm = 15  # capacitance
+Rm = 1.5  # resistance
+tau_m = Rm*Cm  # time constant
+Vt = 10  # threshold of V, neuron fires when exceeding threshold
 Vr = 0.0  # reset to Vr after firing
 
 
@@ -22,15 +24,16 @@ Vr = 0.0  # reset to Vr after firing
 print("Enter desired current")
 I = float(input())
 
-# Collect data/run simulation
-for i in range(len(times)):
-    # Update Vm
-    Vm[i] = Vm[i-1] + (((-Vm[i-1] + I*Rm) / tau_m) * dt)
 
-    # Test if spike occurred
-    if Vm[i] >= Vt:
-        Vm[i] = Vr
+while times[-1] < 50:
+    times.append(round(times[-1] + dt, 1))
+    old_V = Vm[-1]
+    Vm.append(old_V + (((old_V + I * Rm) / tau_m) * dt))
+
+    # Test for spike, if exceeded threshold return to Vr
+    if Vm[-1] >= Vt:
+        Vm[-1] = Vr
 
 
-# plot membrane potential trace
+# Display plot
 plotter.plot(times, Vm, 'LIF Simulation with I='+str(I))
