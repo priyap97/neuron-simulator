@@ -27,8 +27,8 @@ However, suggested values are:
 
 | Variable | Value Suggested |
 |----------|--------------------------------|
-| `a` | 0.02 |
-| `b` | 0.2 |
-| `c` | -65.0 |
-| `d` | 2 |
-| `I` | Any amount, however with the above values the neuron will consistently spike with at least 3.85 |
+| `a` | 0.02 to 0.04 |
+| `b` | 0.2 to 0.4 |
+| `c` | -55.0 to -80.0 |
+| `d` | 2 to 4 |
+| `I` | Any amount, however depending on the above values the neuron should spike at approximately 4 |
