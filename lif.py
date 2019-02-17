@@ -29,6 +29,7 @@ print("Enter desired current")
 I = float(input())
 
 
+# Integrate V from 0.0ms to 200.0ms
 while times[-1] < 200:
     times.append(round(times[-1] + dt, 1))
     old_V = Vm[-1]

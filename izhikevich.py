@@ -26,7 +26,7 @@ d = float(input())
 print('Enter current: ')
 I = float(input())
 
-while times[-1] < 5000:
+while times[-1] < 500:
     # check for spike
     times.append(round(times[-1] + dt, 2))
     if v[-1] >= vt:
