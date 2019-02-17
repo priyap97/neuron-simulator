@@ -4,10 +4,11 @@
 
 import plotter
 
-# Create list of times to run simulation
+# Create list of times to run simulation (in ms)
 times = [0.0]
 dt = 0.02
 
+# Establish lists to track u and v, set threshold voltage
 u = [0.0]  # membrane recovery variable
 v = [-65.0]  # cell voltage
 vt = 30.0  # 30mV threshold
@@ -22,10 +23,11 @@ print('Enter value for c: ')
 c = float(input())
 print('Enter value for d: ')
 d = float(input())
-
 print('Enter current: ')
 I = float(input())
 
+
+# Integrate over 500 ms
 while times[-1] < 500:
     # check for spike
     times.append(round(times[-1] + dt, 2))
@@ -40,4 +42,5 @@ while times[-1] < 500:
         v.append(v[-1] + dv*dt)
 
 
+# Plot results
 plotter.plot(times, v, 'Izhikevich model with a='+str(a)+", b="+str(b)+", c="+str(c)+", d="+str(d)+", I="+str(I))
