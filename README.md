@@ -4,6 +4,7 @@ Simulates firing rates of Hodgkin-Huxley, Leaky Integrate and Fire (LIF), and Iz
 ## How to Use
 This project requires Python to run, and was developed using Python 3.6.1.
 1. Clone this repository, and navigate to the correct directory: `neuron-simulator`. 
+1. Run the following command: `pip install -r requirements.txt`
 1. Run the following command: `python simulator.py`
 1. Follow instructions as prompted
 

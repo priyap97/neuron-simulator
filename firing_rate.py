@@ -5,6 +5,7 @@
 import plotter
 
 
+# Given input current, returns firing rate in spikes/second
 def firing_rate(I):
     # Create list of times to run simulation
     times = 0
@@ -35,6 +36,7 @@ def firing_rate(I):
     return spikes
 
 
+# Runs simulation
 def simulate():
     print('Enter minimum current to measure firing rate')
     min = float(input())

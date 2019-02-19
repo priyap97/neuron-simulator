@@ -36,6 +36,7 @@ def b_n(V):
     return round(float(0.125 * exp((V + 65) / (-80))), 6)
 
 
+# Runs simulation
 def simulate():
     # Create list of times to run simulation
     times = [0]
