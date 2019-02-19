@@ -1,9 +1,9 @@
 from matplotlib import pyplot
 
 
-def plot(x, y, model):
+def plot(x, y, model, xlabel='Time in ms', ylabel='Membrane potential V (mV)'):
     pyplot.plot(x,y)
-    pyplot.xlabel('Time in ms')
-    pyplot.ylabel('Membrane potential v (mV)')
+    pyplot.xlabel(xlabel)
+    pyplot.ylabel(ylabel)
     pyplot.title(model)
     pyplot.show()
