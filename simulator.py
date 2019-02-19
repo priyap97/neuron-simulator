@@ -4,7 +4,6 @@ print('Which simulator would you like to use? \nEnter L for LIF, F for firing ra
 H for Hodgkin-Huxley: ')
 sim = input().upper()[0]
 
-
 if sim == 'I':
     izhikevich.simulate()
 
