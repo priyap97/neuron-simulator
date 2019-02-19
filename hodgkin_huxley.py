@@ -43,9 +43,9 @@ def simulate():
 
     # Create lists to track V, m, h, n over time
     V = [0.0]
-    m = [0.0]
-    h = [0.0]
-    n = [0.0]
+    m = 0.0
+    h = 0.0
+    n = 0.0
 
     # Set variables for use in calculation
     C = 30  # capacitance
@@ -58,34 +58,32 @@ def simulate():
     V_K = -10  # Potassium potential
     V_L = 10  # Leak potential
 
-
     # User selects current to be injected
     print("Enter desired current: ")
     I = float(input())
 
-
-    # Integrate from 0.0ms to 500.0ms
-    while times[-1] < 500:
+    # Integrate from 0.0ms to 100.0ms
+    while times[-1] < 100:
         times.append(round(times[-1] + dt, 1))
 
         V_old = V[-1]
 
         # Update m
-        dm = ((a_m(V_old) * (1 - m[-1])) - (b_m(V_old) * m[-1])) * dt
+        dm = ((a_m(V_old) * (1 - m)) - (b_m(V_old) * m)) * dt
         dm = round(dm, 6)
-        m.append(m[-1] + dm)
+        m = m + dm
 
         # Update h
-        dh = ((a_h(V_old) * (1 - h[-1])) - (b_h(V_old) * h[-1])) * dt
+        dh = ((a_h(V_old) * (1 - h)) - (b_h(V_old) * h)) * dt
         dh = round(dh, 6)
-        h.append(h[-1] + dh)
+        h = h + dh
 
         # Update n
-        dn = ((a_n(V_old) * (1 - n[-1])) - (b_n(V_old) * n[-1])) * dt
-        dh = round(dh, 6)
-        n.append(n[-1] + dn)
+        dn = ((a_n(V_old) * (1 - n)) - (b_n(V_old) * n)) * dt
+        dn = round(dh, 6)
+        n = n + dn
 
-        dV = (I - g_Na*(m[-1]**3)*h[-1]*(V_old-V_Na) - g_K*(n[-1]**4)*(V_old-V_K) - g_L*(V_old-V_L)) * (dt/C)
+        dV = (I - g_Na*(m**3)*h*(V_old-V_Na) - g_K*(n**4)*(V_old-V_K) - g_L*(V_old-V_L)) * (dt/C)
         dV = round(dV, 6)
         V.append(V_old + dV)
 
