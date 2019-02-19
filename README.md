@@ -1,6 +1,12 @@
 # neuron-simulator
 Simulates firing rates of Hodgkin-Huxley, Leaky Integrate and Fire (LIF), and Izhikevich models of neurons based on simulated input current.
 
+## How to Use
+This project requires Python to run, and was developed using Python 3.6.1.
+1. Clone this repository, and navigate to the correct directory: `neuron-simulator`. 
+1. Run the following command: `python simulator.py`
+1. Follow instructions as prompted
+
 ## Leaky Integrate and Fire Model
 The code to simulate the LIF model can be found in `lif.py`. All of the simulators make use of `plotter.py` to plot the results.
 
