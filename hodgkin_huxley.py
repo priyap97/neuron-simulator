@@ -5,14 +5,17 @@
 import plotter
 from numpy import exp
 
-def I_t(t):
-    return 10 * (t > 100) - 10 * (t > 200) + 35 * (t > 300) - 35 * (t > 400)
 
+# Based on research,
+def I_t(t):
+    if 0 < t < 1.0:
+        return 150.0
+    elif 10.0< t <11.0:
+        return 50.0
+    return 0
 
 # Helper function computes a_m(V)
 def a_m(V):
-    # numer = 0.1 * (V + 40)
-    # denom = 1 - exp(-(V + 40)/10)
     return 0.1*(V+40) / (1 - exp(-(V+40)/10))
 
 
@@ -64,13 +67,9 @@ def simulate():
     V_K = -77  # Potassium potential
     V_L = -54.38  # Leak potential
 
-    # User selects current to be injected
-    print("Enter desired current: ")
-    I = float(input())
-
+    I = I_t(0)
     # Integrate from 0.0ms to 50.0ms
     while times[-1] < 100:
-        print(str(V[-1]) + " " + str(times[-1]))
         times.append(round(times[-1] + dt, 1))
 
         V_old = V[-1]
@@ -87,14 +86,16 @@ def simulate():
         dn = (a_n(V_old) * (1 - n)) - (b_n(V_old) * n)
         n = n + dn*dt
 
+        # Calculate dV term by term
         dV_Na = g_Na*(m**3)*h*(V_old - V_Na)
         dV_K = g_K*(n**4)*(V_old - V_K)
         dV_L = g_L*(V_old - V_L)
 
-        dV = I_t(times[-1]) - dV_Na - dV_K - dV_L
+        dV = I - dV_Na - dV_K - dV_L
         dV = dV * dt / C
 
+        # Add to list for plot
         V.append(V_old + dV)
 
     # Plot results
-    plotter.plot(times, V, 'Hodgkin-Huxley Model with I='+str(I))
+    plotter.plot(times, V, 'Hodgkin-Huxley Model'+str(I))
