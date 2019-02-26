@@ -19,7 +19,6 @@ def firing_rate(I):
     tau_m = Rm*Cm  # time constant
     Vt = 10  # threshold of V, neuron fires when exceeding threshold
     Vr = 0.0  # reset to Vr after firing
-
     spikes = 0
 
     # Integrate V from 0.0ms to 1000.0ms

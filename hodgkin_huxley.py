@@ -98,4 +98,4 @@ def simulate():
         V.append(V_old + dV)
 
     # Plot results
-    plotter.plot(times, V, 'Hodgkin-Huxley Model'+str(I))
+    plotter.plot(times, V, 'Hodgkin-Huxley Model')

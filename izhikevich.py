@@ -29,8 +29,8 @@ def simulate():
     I = float(input())
 
 
-    # Integrate over 500 ms
-    while times[-1] < 500:
+    # Integrate over 200 ms
+    while times[-1] < 200:
         # check for spike
         times.append(round(times[-1] + dt, 2))
         if v[-1] >= vt:
