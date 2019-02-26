@@ -16,11 +16,12 @@ The algorithm used for this model follows the formulas provided in the project d
 
 | Variable | Value Used |
 |----------|--------------------------------|
-| `I(t)` | Created an arbitrary linear function which decays the current over time |
 | `Cm` | Used arbitrary capacitor value of 30 |
 | `Rm` | Used arbitrary resistor value of 7 |
 | `Vt` | Used arbitrary voltage threshold of 10 |
 | `Vr` | Used arbitrary voltage reset value of 0 |
+
+Since a neuron is essentially an RC circuit, `I` decays over time following an RC circuit's pattern
 
 ## Izhikevich Model
 The code to simulate the Izhikevich model can be found in `izhikevich.py`. All of the simulators make use of `plotter.py` to plot the results.

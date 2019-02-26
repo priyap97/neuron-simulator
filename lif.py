@@ -3,11 +3,12 @@
 # Priya Pamnani (pp572@rutgers.edu)
 
 import plotter
+from numpy import exp
 
 
 # Helper function: shows decay of I over time
-def I_t(I, t):
-    return I-0.1*t
+def I_t(I, t, tau):
+    return I * exp(-t/tau)
 
 
 def simulate():
@@ -32,7 +33,7 @@ def simulate():
     while times[-1] < 200:
         times.append(round(times[-1] + dt, 1))
         old_V = Vm[-1]
-        Vm.append(old_V + (((-old_V + I_t(I, times[-1]) * Rm) / tau_m) * dt))
+        Vm.append(old_V + (((-old_V + I_t(I, times[-1], tau_m) * Rm) / tau_m) * dt))
 
         # Test for spike, if exceeded threshold return to Vr
         if Vm[-1] >= Vt:
